@@ -6,7 +6,7 @@ The purpose of this challenge is to practice creating custom gesture recognition
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * The program is able to recognize rock, paper, and scissors as common gestures.
@@ -16,26 +16,26 @@ Create a program that meets the following criteria:
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * The program is able to recognize rock, paper, and scissors as common gestures.
 * The program secretly chooses "rock", "paper", or "scissors".
 * The program displays some kind of count down for the player to lock in their choice.
-* At the conclusion of the count down, the program compares the results of the human player and the program's secret choice.
+* At the conclusion of the count-down, the program compares the results of the human player and the program's secret choice.
 * The program displays the result of the game (win. lose, or tie) in text on the screen.
 
 ## Spicy 🌶️🌶️🌶️
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * The program is able to recognize rock, paper, and scissors as common gestures.
 * The program secretly chooses "rock", "paper", or "scissors".
 * The program displays some kind of count down for the player to lock in their choice.
-* At the conclusion of the count down, the program compares the results of the human player and the program's secret choice.
+* At the conclusion of the count-down, the program compares the results of the human player and the program's secret choice.
 * The program displays the result of the game (win. lose, or tie) in text on the screen.
 
 Then choose 1 of the following extensions:
@@ -44,6 +44,6 @@ Then choose 1 of the following extensions:
 
 OR
 
-* Have the program play a best of 3 match. You will have to create custom gesture controls to ensure the player knows how to continue between games.
+* Have the program play a best-of-3 match. You will have to create custom gesture controls to ensure the player knows how to continue between games.
 
 If you do both extensions, you will be awarded 2 extra points (for a total of 5 points for the challenge)!

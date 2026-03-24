@@ -39,7 +39,7 @@ hand = hands[0]
 This section describes the data available for each detected hand object.
 
 | Property               | Type    | Description                                |
-| ---------------------- | ------- | ------------------------------------------ |
+|------------------------|---------|--------------------------------------------|
 | `landmarks`            | list    | 3D pixel coordinates of all hand landmarks |
 | `normalized_landmarks` | list    | Normalized landmark values from Mediapipe  |
 | `side`                 | str     | `"Left"` or `"Right"`                      |

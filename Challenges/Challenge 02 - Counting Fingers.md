@@ -6,7 +6,7 @@ This challenge is designed to help you with using the different properties of a 
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * The program counts the number of fingers that are up.
@@ -16,7 +16,7 @@ Create a program that meets the following criteria:
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * The program counts the number of fingers that are up.
@@ -25,7 +25,7 @@ Create a program that meets the following criteria:
 
 ## Spicy 🌶️🌶️🌶️
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * Left hands are drawn in blue, right hands are drawn in green (use custom styles)

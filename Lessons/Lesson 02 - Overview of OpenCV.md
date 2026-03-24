@@ -197,7 +197,7 @@ cv2.putText(
 #### Fonts
 
 | Code                              | Description                                    |
-| --------------------------------- | ---------------------------------------------- |
+|-----------------------------------|------------------------------------------------|
 | `cv2.FONT_HERSHEY_SIMPLEX`        | Simple, clean sans-serif font.                 |
 | `cv2.FONT_HERSHEY_PLAIN`          | Small sans-serif font with minimal styling.    |
 | `cv2.FONT_HERSHEY_DUPLEX`         | Slightly thicker sans-serif font.              |
@@ -211,7 +211,7 @@ cv2.putText(
 #### Line Types
 
 | Code          | Description                                                 |
-| ------------- | ----------------------------------------------------------- |
+|---------------|-------------------------------------------------------------|
 | `cv2.FILLED`  | Fills the shape completely with color.                      |
 | `cv2.LINE_4`  | Line drawn using 4-connected pixels (blocky edges).         |
 | `cv2.LINE_8`  | Line drawn using 8-connected pixels (smoother than LINE_4). |

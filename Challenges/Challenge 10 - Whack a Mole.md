@@ -4,7 +4,7 @@
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * Circles (or rectangles or some other shape) that represent moles are placed at random positions on the screen at random intervals of time.
@@ -16,7 +16,7 @@ Create a program that meets the following criteria:
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * Circles (or rectangles or some other shape) that represent moles are placed at random positions on the screen at random intervals of time.
@@ -31,7 +31,7 @@ Create a program that meets the following criteria:
 
 Create a program that meets the following criteria:
 
-* A live video feed is captured throug a webcam.
+* A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
 * Images of moles are placed at random positions on the screen at random intervals of time.
