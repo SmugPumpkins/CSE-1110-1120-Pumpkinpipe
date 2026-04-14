@@ -16,7 +16,9 @@ This section explains how to load images from disk into memory.
 
 ```python
 # Load an image from file
-img = cv2.imread("image.png")
+img = cv2.imread(
+    "image.png"  # File path
+)
 ```
 
 ## Saving Images
@@ -30,7 +32,10 @@ This section shows how to save images back to disk.
 
 ```python
 # Save the image to a new file
-cv2.imwrite("output.png", img)
+cv2.imwrite(
+    "output.png",  # File name to save as
+    img            # Image to save
+)
 ```
 
 ## Displaying Images
@@ -40,14 +45,13 @@ This section shows how to display images in a window.
 * `cv2.imshow()`: Displays an image in a window.
 * `"Window"`: The name of the window.
 * `img`: The image to display.
-* `cv2.waitKey(0)`: Waits indefinitely for a key press.
-* `cv2.destroyAllWindows()`: Closes all windows.
 
 ```python
 # Show the image in a window
-cv2.imshow("Window", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv2.imshow(
+    "Window",  # Window name
+    img        # Image to display in the window
+)
 ```
 
 ## Image Properties
@@ -154,39 +158,15 @@ This section shows how to mix images using weights.
 
 ```python
 # Blend two images
-blend = cv2.addWeighted(img, 0.5, img, 0.5, 0)
+blend = cv2.addWeighted(
+    img,    # First image to blend
+    0.5,    # First image blend weight (0.5 is half)
+    img_2,  # Second image to blend
+    0.5,    # Second image blend weight
+    0       # Brightness offset (recommend set to 0)
+)
 ```
 
-## Drawing Shapes
-
-This section shows how to draw basic shapes.
-
-* `cv2.line()`: Draws a line.
-* `cv2.rectangle()`: Draws a rectangle.
-* `cv2.circle()`: Draws a circle.
-* Coordinates use `(x, y)` format.
-* Colors use BGR format.
-
-```python
-# Draw shapes
-cv2.line(img, (0, 0), (100, 100), (255, 0, 0), 2)
-cv2.rectangle(img, (50, 50), (150, 150), (0, 255, 0), 2)
-cv2.circle(img, (200, 200), 50, (0, 0, 255), 2)
-```
-
-## Drawing Text
-
-This section shows how to overlay text on images.
-
-* `cv2.putText()`: Draws text.
-* `"Text"`: The string to display.
-* `(x, y)`: Position of text.
-* Font and size control appearance.
-
-```python
-# Add text
-cv2.putText(img, "Hello", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-```
 
 ## Color Space Conversion
 
@@ -198,8 +178,89 @@ This section shows how to change how color is represented.
 
 ```python
 # Convert to grayscale
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(
+    img,                # Image to convert
+    cv2.COLOR_BGR2GRAY  # New color space
+)
 ```
+
+The conversion code always follows the pattern `cv.COLOR_<INPUT>2<OUTPUT>`.
+
+### BGR (Blue, Green, Red)
+
+BGR is the **default color space used by OpenCV**. Each pixel has three channels, representing blue, green, and red values. Even though RGB is more common in other programs, OpenCV loads images as BGR by default.
+
+The table below shows common conversions that start from BGR:
+
+| Code                | Input Color Space                       | Output Color Space                                                       |
+|---------------------|-----------------------------------------|--------------------------------------------------------------------------|
+| `cv.COLOR_BGR2BGRA` | **BGR** – 3 Channels (Blue, Green, Red) | **BGRA** – 4 Channels (Blue, Green, Red, Alpha)                          |
+| `cv.COLOR_BGR2GRAY` | **BGR** – 3 Channels (Blue, Green, Red) | **Gray** – 1 Channel (Brightness)                                        |
+| `cv.COLOR_BGR2HSV`  | **BGR** – 3 Channels (Blue, Green, Red) | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) |
+| `cv.COLOR_BGR2RGB`  | **BGR** – 3 Channels (Blue, Green, Red) | **RGB** – 3 Channels (Red, Green, Blue)                                  |
+| `cv.COLOR_BGR2RGBA` | **BGR** – 3 Channels (Blue, Green, Red) | **RGBA** – 4 Channels (Red, Green, Blue, Alpha)                          |
+
+### RGB (Red, Green, Blue)
+
+RGB is the most common color space used by graphics software, image editors, and displays. Like BGR, it uses three channels, but the order of those channels is red, green, then blue.
+
+These conversions are useful when working with other libraries that expect RGB instead of BGR:
+
+| Code                | Input Color Space                       | Output Color Space                                                       |
+|---------------------|-----------------------------------------|--------------------------------------------------------------------------|
+| `cv.COLOR_RGB2BGR`  | **RGB** – 3 Channels (Red, Green, Blue) | **BGR** – 3 Channels (Blue, Green, Red)                                  |
+| `cv.COLOR_RGB2BGRA` | **RGB** – 3 Channels (Red, Green, Blue) | **BGRA** – 4 Channels (Blue, Green, Red, Alpha)                          |
+| `cv.COLOR_RGB2GRAY` | **RGB** – 3 Channels (Red, Green, Blue) | **Gray** – 1 Channel (Brightness)                                        |
+| `cv.COLOR_RGB2HSV`  | **RGB** – 3 Channels (Red, Green, Blue) | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) |
+| `cv.COLOR_RGB2RGBA` | **RGB** – 3 Channels (Red, Green, Blue) | **RGBA** – 4 Channels (Red, Green, Blue, Alpha)                          |
+
+### GRAY (Grayscale)
+
+Grayscale images store only **brightness information**. Each pixel has a single channel, where lower values are darker and higher values are brighter. Grayscale images are commonly used for thresholding and edge detection because they remove color complexity.
+
+The following conversions show how grayscale images can be converted back into multichannel formats:
+
+| Code                | Input Color Space                                                        | Output Color Space                              |
+|---------------------|--------------------------------------------------------------------------|-------------------------------------------------|
+| `cv.COLOR_HSV2BGR`  | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) | **BGR** – 3 Channels (Blue, Green, Red)         |
+| `cv.COLOR_HSV2BGRA` | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) | **BGRA** – 4 Channels (Blue, Green, Red, Alpha) |
+| `cv.COLOR_HSV2RGB`  | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) | **RGB** – 3 Channels (Red, Green, Blue)         |
+| `cv.COLOR_HSV2RGBA` | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) | **RGBA** – 4 Channels (Red, Green, Blue, Alpha) |
+
+### HSV (Hue, Saturation, Value)
+
+HSV separates color information into three more intuitive components: hue (the color itself), saturation (how intense the color is), and value (brightness). This makes HSV very useful when you want to isolate or adjust colors.
+
+| Code                 | Input Color Space                 | Output Color Space                              |
+|----------------------|-----------------------------------|-------------------------------------------------|
+| `cv.COLOR_GRAY2BGR`  | **Gray** – 1 Channel (Brightness) | **BGR** – 3 Channels (Blue, Green, Red)         |
+| `cv.COLOR_GRAY2BGRA` | **Gray** – 1 Channel (Brightness) | **BGRA** – 4 Channels (Blue, Green, Red, Alpha) |
+| `cv.COLOR_GRAY2RGB`  | **Gray** – 1 Channel (Brightness) | **RGB** – 3 Channels (Red, Green, Blue)         |
+| `cv.COLOR_GRAY2RGBA` | **Gray** – 1 Channel (Brightness) | **RGBA** – 4 Channels (Red, Green, Blue, Alpha) |
+
+### BRGA (Blue, Green, Red, Alpha)
+
+BGRA is the same as BGR but with an additional **alpha channel**. The alpha channel controls transparency, where lower values are more transparent and higher values are more opaque.
+
+| Code                 | Input Color Space                               | Output Color Space                                                       |
+|----------------------|-------------------------------------------------|--------------------------------------------------------------------------|
+| `cv.COLOR_BGRA2BGR`  | **BGRA** – 4 Channels (Blue, Green, Red, Alpha) | **BGR** – 3 Channels (Blue, Green, Red)                                  |
+| `cv.COLOR_BGRA2GRAY` | **BGRA** – 4 Channels (Blue, Green, Red, Alpha) | **Gray** – 1 Channel (Brightness)                                        |
+| `cv.COLOR_BGRA2HSV`  | **BGRA** – 4 Channels (Blue, Green, Red, Alpha) | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) |
+| `cv.COLOR_BGRA2RGB`  | **BGRA** – 4 Channels (Blue, Green, Red, Alpha) | **RGB** – 3 Channels (Red, Green, Blue)                                  |
+| `cv.COLOR_BGRA2RGBA` | **BGRA** – 4 Channels (Blue, Green, Red, Alpha) | **RGBA** – 4 Channels (Red, Green, Blue, Alpha)                          |
+
+### RGBA (RED, Green, Blue, Alpha)
+
+RGBA is commonly used in graphics applications where transparency is required. It is identical to RGB, with an added alpha channel.
+
+| Code                 | Input Color Space                               | Output Color Space                                                       |
+|----------------------|-------------------------------------------------|--------------------------------------------------------------------------|
+| `cv.COLOR_RGBA2RGB`  | **RGBA** – 4 Channels (Red, Green, Blue, Alpha) | **RGB** – 3 Channels (Red, Green, Blue)                                  |
+| `cv.COLOR_RGBA2BGR`  | **RGBA** – 4 Channels (Red, Green, Blue, Alpha) | **BGR** – 3 Channels (Blue, Green, Red)                                  |
+| `cv.COLOR_RGBA2BGRA` | **RGBA** – 4 Channels (Red, Green, Blue, Alpha) | **BGRA** – 4 Channels (Blue, Green, Red, Alpha)                          |
+| `cv.COLOR_RGBA2GRAY` | **RGBA** – 4 Channels (Red, Green, Blue, Alpha) | **Gray** – 1 Channel (Brightness)                                        |
+| `cv.COLOR_RGBA2HSV`  | **RGBA** – 4 Channels (Red, Green, Blue, Alpha) | **HSV** – 3 Channels (Hue/Color, Saturation/Intensity, Value/Brightness) |
 
 ## Resizing Images
 
@@ -211,50 +272,52 @@ This section shows how to scale images.
 
 ```python
 # Resize image
-small = cv2.resize(img, (100, 100))
-```
-
-## Translating Images
-
-This section shows how to move images.
-
-* `cv2.warpAffine()`: Applies transformation.
-* Matrix controls movement.
-* Moves image in x and y directions.
-
-```python
-# Move image right and down
-matrix = np.float32([[1, 0, 50], [0, 1, 50]])
-moved = cv2.warpAffine(img, matrix, (img.shape[1], img.shape[0]))
-```
-
-## Rotating Images
-
-This section shows how to rotate images.
-
-* `cv2.getRotationMatrix2D()`: Creates rotation matrix.
-* `cv2.warpAffine()`: Applies rotation.
-* Rotation is around a center point.
-
-```python
-# Rotate image
-center = (img.shape[1] // 2, img.shape[0] // 2)
-matrix = cv2.getRotationMatrix2D(center, 45, 1)
-rotated = cv2.warpAffine(img, matrix, (img.shape[1], img.shape[0]))
+small = cv2.resize(
+    img,        # Image to resize
+    (100, 100)  # New dimensions (width, height)
+)
 ```
 
 ## Thresholding
 
-This section shows how to create binary images.
+Thresholding converts a grayscale image into a high-contrast image by deciding which pixels should be considered black or white. This technique is commonly used for object detection and image segmentation.
 
-* `cv2.threshold()`: Applies threshold.
-* Pixels become black or white.
-* Works on grayscale images.
+Thresholding only works on grayscale images.
+
+![Grey](./Images/grey.png)
+
+The code below first converts the image to grayscale, then applies a binary threshold.
 
 ```python
-# Apply threshold
-_, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# Convert the image you want to threshold to greyscale
+grey_img = cv.cvtColor(grey, cv.COLOR_BGR2GRAY)
+
+# The threshold value is the number used to determine what is white and what is black. 
+# Pixels less than this value will be black.
+# Pixels greater than his value will be white.
+threshold_value = 127
+
+# Determines what color to display as "white" in the output.
+# 255 will produce a threshold that is black (0) and white (255).
+# A value less than 255 will result in a black and grey image
+white = 255
+
+# There are different types of thresholding that are outlined later. Binary is the most basic and intuitive one.
+threshold_type = cv.THRESH_BINARY
+
+# cv.threshold() returns an image. '_' is used to store the boolean for whether or not an image was successfully produced.
+_, grey_threshold = cv.threshold(grey_img, threshold_value, white, threshold_type)
 ```
+
+### Threshold Types
+
+| Code                   | Description                                                                                                               | Output                                                         |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| `cv.THRESH_BINARY`     | Pixels greater than `threshold_value` are *white*. Pixels les than `threshold_value` are *black*.                         | ![threshold_binary.png](Images/threshold_binary.png)           |
+| `cv.THRESH_BINARY_INV` | Pixels greater than `threshold_value` are *black*. Pixels les than `threshold_value` are *black*.                         | ![threshold_binary_inv.png](Images/threshold_binary_inv.png)   |
+| `cv.THRESH_TRUNC`      | Pixels less than `threshold_value` are *unchanged*. Pixels greater than `threshold_value` are set to *`threshold_value`*. | ![threshold_truncate.png](Images/threshold_truncate.png)       |
+| `cv.THRESH_TOZERO`     | Pixels less than `threshold_value` are set to *black*. Pixels greater than `threshold_value` are *unchanged*.             | ![threshold_to_zero.png](Images/threshold_to_zero.png)         |
+| `cv.THRESH_TOZERO_INV` | Pixels greater than `threshold_value` are set to *black*. Pixels less than `threshold_value` are *unchanged*.             | ![threshold_to_zero_inv.png](Images/threshold_to_zero_inv.png) |
 
 ## Edge Detection
 
@@ -266,7 +329,11 @@ This section shows how to detect edges in images.
 
 ```python
 # Detect edges
-edges = cv2.Canny(gray, 100, 200)
+edges = cv2.Canny(
+    img,  # Image to detect edges on
+    100,  # "Weak" edge
+    200   # "Strong" edge
+)
 ```
 
 ## Example - Image Load, Modify, and Display
