@@ -4,6 +4,12 @@
 
 Pumpkinpipe provides a simplified interface for using Mediapipe hand tracking, allowing you to detect hands, access their properties, and draw or analyze them with minimal setup.
 
+## Landmarks
+
+Hands are detected using what are called "landmarks". Different points on the hand are identified with different index numbers, and have different connection points between them. The landmark map for this library looks like this:
+
+![Hand landmarks](./Images/landmarks.png)
+
 ## Hand Detector
 
 This section introduces the HandDetector, which is responsible for detecting hands in an image or video frame.

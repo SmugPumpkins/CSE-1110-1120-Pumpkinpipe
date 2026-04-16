@@ -12,6 +12,8 @@ Create a program that meets the following criteria:
 * The program counts the number of fingers that are up.
 * The number of fingers that are up is displayed in the top left corner of the screen as text.
 
+![Challenge 2 Mild](./Images/challenge_2_mild.gif)
+
 ## Medium 🌶️🌶️
 
 Create a program that meets the following criteria:
@@ -23,13 +25,17 @@ Create a program that meets the following criteria:
 * Each hand has a separate count for the number of fingers that are up.
 * The number of fingers that are up is displayed in the top left corner of the screen as text as 2 separate values, and includes if the hand is left or right.
 
+![Challenge 2 Medium](./Images/challenge_2_medium.gif)
+
 ## Spicy 🌶️🌶️🌶️
 
 * A live video feed is captured through a webcam.
 * Hands are detected.
 * Hands are drawn.
-* Left hands are drawn in blue, right hands are drawn in green (use custom styles)
+* Left hands are drawn in blue, right hands are drawn in red (use custom styles)
 * The program counts the number of fingers that are up.
 * Each hand has a separate count for the number of fingers that are up.
 * The number of fingers that are up is displayed in the top left corner of the screen as text as 2 separate values, and includes if the hand is left or right.
 * The color of the text changes depending on if the hand is left or right (blue for left, red for right).
+
+![Challenge 2 Spicy](./Images/challenge_2_spicy.gif)

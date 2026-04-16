@@ -11,6 +11,8 @@ Create a program that meets the following criteria:
 * Hands are drawn.
 * The connection style and the landmark style of the hand have been visibly changed.
 
+![Challenge 04 Mild](./Images/challenge_04_mild.gif)
+
 ## Medium 🌶️🌶️
 
 Create a program that meets the following criteria:
@@ -20,6 +22,8 @@ Create a program that meets the following criteria:
 * Hands are drawn.
 * The color of the connection and landmark style are updated every frame based off of the x position of the wrist of the hand they are attached to.
     * For example, for a lower x position they might be more green, and for a higher x position they might be more red.
+  
+![Challenge 04 Medium](./Images/challenge_04_medium.gif)
 
 ## Spicy 🌶️🌶️🌶️
 
@@ -32,3 +36,6 @@ Create a program that meets the following criteria:
     * For example, for a lower y position they might be more green, and for a higher y position they might be more red.
 * Each individual landmark has its thickness change based on the z position of that specific landmark.
     * For example, a lower z position might have a thinner thickness, and a higher z position might have a fatter thickness.
+* *Hint: You will actually need to be drawing circles where the landmarks would be, and setting the landmarks to have a radius of 0!*
+
+![Challenge 04 Spicy](./Images/challenge_04_spicy.gif)
